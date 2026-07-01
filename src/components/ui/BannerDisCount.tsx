@@ -5,7 +5,7 @@ const BannerDisCount = () => {
   return (
     <>
       {show && (
-        <div className="flex justify-between transition-all items-center bg-linear-to-r from-violet-500 via-[#9938CA] to-[#E0724A] py-3 px-6">
+        <div className="flex justify-between  transition-all items-center bg-linear-to-r from-violet-500 via-[#9938CA] to-[#E0724A] py-3 px-6">
           <p className="text-white text-sm font-bold">
             Get 20% OFF on Your First Order!
           </p>

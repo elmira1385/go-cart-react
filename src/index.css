@@ -1,7 +1,15 @@
 @import "tailwindcss";
-body{
+body {
   height: 100vh;
 }
-:root{
+:root {
   height: 100%;
+}
+@theme {
+  --color-t-green-200: oklch(92.5% 0.084 155.995);
+  --color-t-green-300: oklch(87.1% 0.15 154.449) ;
+  --color-t-green-600: oklch(62.7% 0.194 149.214);
+  --color-t-slate-600: oklch(44.6% 0.043 257.281);
+  --color-t-slate-700: oklch(37.2% 0.044 257.287);
+  --color-t-slate-900: oklch(20.8% 0.042 265.755);
 }

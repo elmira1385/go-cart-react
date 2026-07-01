@@ -1,9 +1,10 @@
-import React from 'react'
-import BannerDisCount from './components/ui/BannerDisCount'
+import Hero from "./components/ui/Hero"
 
 const Home = () => {
   return (
-    <BannerDisCount/>
+    <>
+    <Hero/>
+    </>
   )
 }
 
