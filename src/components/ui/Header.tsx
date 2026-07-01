@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RiMenu3Fill, RiShoppingBasket2Line } from "react-icons/ri";
+import { TiDeleteOutline } from "react-icons/ti";
 
 const Header = () => {
   const [openHeader, setOpenHeader] = useState(false);
@@ -15,17 +16,26 @@ const Header = () => {
         </div>
         <div className="flex gap-3 justify-center items-center">
           <RiShoppingBasket2Line className="text-3xl text-t-slate-700" />
-          <RiMenu3Fill
-            onClick={() => {
-              setOpenHeader((prev) => !prev);
-            }}
-            className="text-2xl text-t-slate-700"
-          />
+          {openHeader ? (
+            <TiDeleteOutline
+              onClick={() => {
+                setOpenHeader((prev) => !prev);
+              }}
+               className="text-2xl text-t-slate-700"
+            />
+          ) : (
+            <RiMenu3Fill
+              onClick={() => {
+                setOpenHeader((prev) => !prev);
+              }}
+              className="text-2xl text-t-slate-700"
+            />
+          )}
         </div>
       </div>
       {openHeader && (
         <div
-          className={`fixed  w-full  bg-green-50 flex flex-col  items-start p-4 gap-4 transition-all duration-300  ${
+          className={`fixed  w-full  flex flex-col bg-white items-start p-4 gap-4 transition-all duration-300  ${
             openHeader ? "right-0" : "-right-full"
           }`}
         >
