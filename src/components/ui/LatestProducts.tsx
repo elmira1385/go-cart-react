@@ -8,7 +8,7 @@ const LatestProducts = () => {
   const latestData=data?.slice(0,4)
   return (
     <div className='flex flex-col gap-10'>
-        <TamplateTitleOfProducts title='Latest Products' count="4"/>
+        <TamplateTitleOfProducts title='Latest Products' count={latestData?.length}/>
         <TamplateOfProducts product={latestData} />
     </div>
   )

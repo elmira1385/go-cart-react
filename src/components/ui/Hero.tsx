@@ -60,8 +60,8 @@ const Hero = () => {
         />
       </div>
       <div className="flex flex-col gap-4 justify-center items-center">
-        {dataHero.map((item) => (
-          <CardHero title={item.title} details={item.details} img={item.img} color={item.color}/>
+        {dataHero.map((item,index) => (
+          <CardHero key={index} title={item.title} details={item.details} img={item.img} color={item.color}/>
         ))}
       </div>
     </div>

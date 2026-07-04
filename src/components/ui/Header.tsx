@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RiMenu3Fill, RiShoppingBasket2Line } from "react-icons/ri";
 import { TiDeleteOutline } from "react-icons/ti";
+import { Link } from "react-router";
 
 const Header = () => {
   const [openHeader, setOpenHeader] = useState(false);
@@ -39,8 +40,13 @@ const Header = () => {
             openHeader ? "right-0" : "-right-full"
           }`}
         >
-          <p>Home</p>
-          <p>All Product</p>
+         <Link onClick={()=>{
+          setOpenHeader(false)
+         }} to="/"> Home</Link>
+         <Link onClick={()=>{
+          setOpenHeader(false)
+         }} to="/pages/AllProducts"> All Product</Link>
+         
           <button className="bg-t-green-600 px-5 py-2 rounded-full text-white">
             Login
           </button>

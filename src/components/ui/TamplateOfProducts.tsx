@@ -1,5 +1,6 @@
 import React from "react";
 import type { IProduct } from "../../api";
+import { Link } from "react-router";
 
 interface Props {
   product?: IProduct[];
@@ -9,7 +10,8 @@ const TamplateOfProducts = ({product=[]}:Props) => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 justify-center gap-10 ">
       {product.map((item) => (
-        <div key={item.id} className="flex flex-col ">
+     <Link to={`/pages/product/${item.id}`} key={item.id} >
+        <div className="flex flex-col ">
           <div className="bg-[#F5F5F5] p-5 sm:p-14 rounded-lg ">
             <img
               alt=""
@@ -63,7 +65,7 @@ const TamplateOfProducts = ({product=[]}:Props) => {
                   viewBox="0 0 24 24"
                   fill="#00C950"
                   stroke="currentColor"
-                  stroke-Width="2"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="lucide lucide-star text-transparent mt-0.5"
@@ -78,7 +80,7 @@ const TamplateOfProducts = ({product=[]}:Props) => {
                   viewBox="0 0 24 24"
                   fill="#00C950"
                   stroke="currentColor"
-                  stroke-Width="2"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   className="lucide lucide-star text-transparent mt-0.5"
@@ -105,7 +107,7 @@ const TamplateOfProducts = ({product=[]}:Props) => {
             </div>
             <p>{`$ ${item.price}`}</p>
           </div>
-        </div>
+        </div></Link>
       ))}
     </div>
   );
