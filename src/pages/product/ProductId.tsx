@@ -1,16 +1,37 @@
 import React, { useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useProducts } from "../../api";
+import { useAddToBasket } from "../../store/useAddToBasket";
 
 const ProductId = () => {
   const { ProductId } = useParams();
   const { data } = useProducts();
+  const route = useNavigate();
   const item = data?.find((item) => item.id === Number(ProductId));
   const [mainImage, setMainImage] = useState("");
-
+  const { setProduct, products,clearOne } = useAddToBasket();
+  const each = products.find((i) => i.id === item?.id);
+  const qty = each?.qty||0;
+  if (!item) return <p>Loading...</p>;
   return (
     <div className="flex flex-col gap-4 p-6">
-      <div className="  text-t-slate-700 text-sm ">{`Home / Products / ${item?.title.slice(0, 12)}`}</div>
+      <div className="  text-t-slate-700 text-sm flex">
+        <p
+          onClick={() => {
+            route("/");
+          }}
+        >
+          Home /
+        </p>
+        <p
+          onClick={() => {
+            route("/pages/AllProducts");
+          }}
+        >
+          Products /
+        </p>
+        <p> {item?.title.slice(0, 12)}</p>
+      </div>
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <div className=" p-10 bg-slate-100 rounded-lg ">
@@ -121,9 +142,51 @@ const ProductId = () => {
           <p className="text-2xl font-semibold text-t-slate-800">
             $<span>{item?.price}</span>
           </p>
-          <button className="bg-t-slate-800 text-white px-10 py-3 text-sm font-medium rounded hover:bg-slate-900 active:scale-95 transition">
-            Add to Cart
-          </button>
+          <>
+            {qty === 0 ? (
+              <button
+                onClick={() => {
+                  setProduct(item);
+                }}
+                className="bg-t-slate-800 text-white px-10 py-3 text-sm font-medium rounded hover:bg-slate-900 active:scale-95 transition"
+              >
+                Add to Cart
+              </button>
+            ) : (
+              <div className="flex items-end gap-5 ">
+                <div className="flex flex-col gap-3">
+                  <p className="text-lg text-slate-800 font-semibold">
+                    Quantity
+                  </p>
+                  <div className=" flex items-center justify-between gap-2 p-1  rounded border border-slate-200 text-sm text-slate-600">
+                    <button
+                      onClick={() => {
+                        clearOne(item.id);
+                      }}
+                      className=" select-none"
+                    >
+                      -
+                    </button>
+                    <p>{qty}</p>
+                    <button
+                      onClick={() => {
+                        setProduct(item);
+                      }}
+                      className=" select-none"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <button onClick={()=>{
+                  route("/pages/Cart")
+                }} className="bg-slate-800 text-white px-10 py-3 text-sm font-medium rounded hover:bg-slate-900 active:scale-95 transition">
+                  View Cart
+                </button>
+              </div>
+            )}
+          </>
+
           <div className="flex flex-col gap-4 text-slate-500">
             <p className="flex gap-3">
               <svg
