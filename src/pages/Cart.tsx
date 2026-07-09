@@ -1,6 +1,7 @@
 import React from "react";
 import { useAddToBasket } from "../store/useAddToBasket";
 import { IoTrashBinOutline } from "react-icons/io5";
+import { Link } from "react-router";
 
 const Cart = () => {
   const { clearOne, products, setProduct } = useAddToBasket();
@@ -11,15 +12,15 @@ const Cart = () => {
   const tax2 = totalPrice * 0.02;
   const totalAmount = totalPrice + tax2;
   return (
-    <div className="flex flex-col p-6 gap-20 justify-between">
-      <div className="flex flex-col flex-1 max-w-4xl gap-4 ">
+    <div className="flex flex-col p-6  gap-20 sm:flex-row sm:gap-2">
+      <div className="flex flex-col flex-2 max-w-4xl gap-4 ">
         <div className="flex flex-col gap-2">
           <p className="text-3xl font-medium ">My Cart</p>
           <div className="flex items-center gap-3">
             <p className="text-slate-600">items in your cart</p>
-            <a
+            <Link
               className="flex items-center gap-1 text-green-500 text-sm"
-              href="/"
+              to="/pages/AllProducts"
             >
               Add more
               <svg
@@ -38,7 +39,7 @@ const Cart = () => {
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col gap-2">
@@ -109,49 +110,49 @@ const Cart = () => {
           </div>
         </div>
       </div>
-      <div className="  bg-gray-100 p-5 ">
-        <p className="text-2xl font-medium">Order Summary</p>
+      <div className=" flex flex-col flex-1  bg-gray-100 p-5 ">
+        <p className="text-xl font-medium">Order Summary</p>
         <hr className="border-gray-300 my-6"></hr>
         <div className="flex flex-col ">
-          <p className="text-base font-medium uppercase">Delivery Address</p>
+          <p className="text-sm font-medium uppercase">Delivery Address</p>
           <div className="relative flex justify-between items-start mt-2">
-            <p className="text-gray-500">No address found</p>
+            <p className="text-gray-500 text-[12px]">No address found</p>
             <button className="text-primary hover:underline cursor-pointer">
               Change
             </button>
           </div>
-          <p className="text-base font-medium uppercase pt-6">Payment Method</p>
+          <p className="text-sm font-medium uppercase pt-6">Payment Method</p>
           <select className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
-            <option value="COD">Cash On Delivery</option>
-            <option value="Online">Online Payment</option>
+            <option value="COD  text-[12px]">Cash On Delivery</option>
+            <option value="Online text-[12px]">Online Payment</option>
           </select>
         </div>
         <hr className="border-gray-300 my-6"></hr>
         <div className="flex flex-col gap-2">
-          <div className="flex justify-between text-gray-500">
+          <div className="flex justify-between text-gray-500  text-sm">
             <p>Price</p>
             <p>
               $<span>{totalPrice}</span>
             </p>
           </div>
-          <div className="flex justify-between text-gray-500">
+          <div className="flex justify-between text-gray-500 text-sm">
             <p>Shipping Fee</p>
-            <p className="text-primary">free</p>
+            <p >free</p>
           </div>
-          <div className="flex justify-between text-gray-500">
+          <div className="flex justify-between text-gray-500  text-sm ">
             <p>Tax (2%)</p>
             <p>
               $<span>{tax2}</span>
             </p>
           </div>
-          <div className="flex justify-between text-lg text-gray-600">
+          <div className="flex justify-between  text-gray-600  text-sm">
             <p>Total Amount:</p>
             <p>
               $<span>{totalAmount}</span>
             </p>
           </div>
         </div>
-        <button className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium bg-primary-dull transition-all">
+        <button className="w-full py-3 mt-6 cursor-pointer bg-t-green-600 text-white font-medium bg-primary-dull transition-all">
           Place Order
         </button>
       </div>
